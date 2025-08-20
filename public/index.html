@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ZipLink</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>✨ ZipLink ✨</h1>
+      <p class="subtitle">輸入網址，一鍵產生短網址與 QR Code</p>
+    </header>
+
+    <section class="card">
+      <h2>建立短網址</h2>
+      <form id="shorten-form" class="form">
+        <input id="input-url" type="url" placeholder="貼上原始網址，例如 https://example.com" required>
+        <button type="submit" class="btn primary">產生</button>
+      </form>
+
+      <div id="result" class="result hidden">
+        <div class="row">
+          <input id="short-url" class="output" readonly>
+          <button id="copy-btn" class="btn">複製</button>
+        </div>
+        <div class="qr-wrap">
+          <img id="qrcode" alt="QR Code">
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>查詢短網址資訊</h2>
+      <form id="info-form" class="form">
+        <input id="input-code" type="text" placeholder="輸入短碼，例如 Ab3xYz9" required>
+        <button type="submit" class="btn">查詢</button>
+      </form>
+      <div id="info" class="info hidden"></div>
+    </section>
+
+    <footer>
+      <small>© 2025 Kelly. All rights reserved.</small>
+    </footer>
+  </div>
+
+  <script src="/main.js"></script>
+</body>
+
+</html>
