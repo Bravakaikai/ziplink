@@ -123,14 +123,14 @@ curl -s http://localhost:3000/api/info/Ab3xYz9 | jq
 
 ## 部署建議
 
-- 設定環境變數：`MONGO_URL`（必填）、`PORT`（選填）。
+- 設定環境變數：`DB_USER`（必填）、`DB_PASS`（必填）、`DB_NAME`（必填）、`PORT`（選填）。
 - 反向代理（Nginx/Cloudflare）請將根路由轉發至 Node 服務。
 - 請妥善保護資料庫（認證、IP 白名單、TLS）。
 
 ## 疑難排解
 
 - 伺服器啟動即退出：
-  - 檢查 `.env` 是否有正確設定 `MONGO_URL`。
+  - 檢查 `.env` 是否有正確設定 `DB_USER`、`DB_PASS`、`DB_NAME`。
   - 確認 MongoDB 可連線，並檢視終端錯誤訊息。
 - 建立短網址回傳 400 Invalid URL：
   - 請輸入有效網址（若無協定會自動補 `http://` 再驗證）。
