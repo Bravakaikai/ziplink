@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // DB connect
+const { DB_USER, DB_PASS, DB_NAME } = process.env;
 const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_NAME}.gjrjyxv.mongodb.net/?retryWrites=true&w=majority&appName=${DB_NAME}`;
 
 mongoose
