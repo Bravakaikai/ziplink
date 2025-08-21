@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "functions": {
+    "api/shorten.js": {
+      "runtime": "@vercel/node"
+    },
+    "api/info/[code].js": {
+      "runtime": "@vercel/node"
+    },
+    "api/[code].js": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/shorten",
+      "dest": "/api/shorten.js"
+    },
+    {
+      "src": "/api/info/([^/]+)",
+      "dest": "/api/info/[code].js?code=$1"
+    },
+    {
+      "src": "/([^/]+)$",
+      "dest": "/api/[code].js?code=$1",
+      "check": true
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ]
+}
