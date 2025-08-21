@@ -9,7 +9,7 @@
       "dest": "/api/info/[code].js?code=$1"
     },
     {
-      "src": "/([a-zA-Z0-9]{7})$",
+      "src": "/([a-zA-Z0-9_-]{7})$",
       "dest": "/api/[code].js?code=$1"
     },
     {

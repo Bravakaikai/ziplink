@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const { customAlphabet } = require("nanoid");
+const { nanoid } = require("nanoid");
 const QRCode = require("qrcode");
 require("dotenv").config();
 
@@ -37,10 +37,7 @@ const linkSchema = new mongoose.Schema(
 const Link = mongoose.model("Link", linkSchema);
 
 // Helpers
-const nanoid = customAlphabet(
-  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-  7
-);
+const generateCode = () => nanoid(7);
 
 function toAbsoluteUrl(req, code) {
   const host = req.get("host");
@@ -81,7 +78,7 @@ app.post("/api/shorten", async (req, res) => {
     let code;
     // Try limited attempts to avoid rare collision
     for (let i = 0; i < 5; i++) {
-      code = nanoid();
+      code = generateCode();
       const exists = await Link.exists({ code });
       if (!exists) break;
       code = null;
