@@ -69,7 +69,7 @@ function normalizeUrl(url) {
 module.exports = async (req, res) => {
   await connectDB();
 
-  if (req.method === "POST" && req.url === "/api/shorten") {
+  if (req.method === "POST") {
     try {
       const { url } = req.body || {};
       if (!url || typeof url !== "string") {
@@ -111,5 +111,5 @@ module.exports = async (req, res) => {
     }
   }
 
-  return res.status(404).json({ error: "Not found" });
+  return res.status(405).json({ error: "Method not allowed" });
 };
